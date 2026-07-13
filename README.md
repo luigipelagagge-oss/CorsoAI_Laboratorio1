@@ -1,26 +1,36 @@
-# Il Mio Sito sui Prompt
+# Fondamenti di IA e Prompt Engineering
 
-## Cos'è un Prompt?
+## Cosa sono IA Generativa e Discriminativa?
 
-Un **prompt** è un'istruzione che diamo all'IA per ottenere una risposta.
+### IA Generativa
+**L'IA Generativa** crea contenuti nuovi: testo, immagini, musica, codice. Esempi famosi:
+- ChatGPT: genera testo
+- DALL-E: genera immagini
+- Midjourney: genera art
 
-## Regole d'Oro
+Funziona apprendendo pattern da enormi dataset e producendo output originali.
 
-- Sii specifico: indica contesto e formato
-- Assegna un ruolo: "Agisci come un insegnante..."
-- Dai esempi quando possibile
+### IA Discriminativa
+**L'IA Discriminativa** classifica e analizza dati esistenti. Non crea, ma giudica e categorizza:
+- Riconoscimento spam nelle email
+- Riconoscimento facciale
+- Diagnosi da immagini mediche
 
-## Esempio di Prompt Efficace
+## Come Scrivere Prompt Efficaci
 
-> Agisci come un esperto di didattica. Crea un quiz di 5 domande sul Rinascimento per studenti di terza media, con risposte multiple.
+Un prompt efficace include:
 
-## IA Generativa vs Discriminativa
+- **Contesto**: Chi sei? Cosa stai facendo?
+- **Ruolo**: Come vuoi che l'IA si comporti?
+- **Formato**: Lista, tabella, paragrafo?
+- **Vincoli**: Lunghezza, tono, pubblico?
 
-| Generativa | Discriminativa |
-|---|---|
-| Crea contenuti nuovi | Classifica dati esistenti |
-| ChatGPT, DALL-E | Filtri spam, riconoscimento facciale |
+> Più sei specifico, migliore sarà il risultato!
+
+## Markdown: Il Nostro Strumento
+
+In questo modulo usiamo **Markdown** per documentare tutto. Markdown è semplice e GitHub Pages lo renderizza automaticamente in HTML.
 
 ---
 
-*Creato con Markdown durante il Modulo 1*
+*Creato durante il Modulo 1 — Fondamenti IA e Prompt*
