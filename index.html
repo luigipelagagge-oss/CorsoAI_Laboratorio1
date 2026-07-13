@@ -2,9 +2,13 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz: Generativa vs Discriminativa</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #333; }
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; color: #333; }
+    .back-banner { background: #fef3c7; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; }
+    .back-banner a { display: inline-flex; align-items: center; gap: 0.5rem; background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    .back-banner a:hover { background: #2563eb; }
     .quiz-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
     button { padding: 1rem; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
     .gen-btn { background: #10b981; color: white; }
@@ -23,7 +27,15 @@
   </style>
 </head>
 <body>
-  <h1>🧠 Quiz: Generativa vs Discriminativa</h1>
+
+  <!-- BOTTONE PER TORNARE AL CORSO CANVA -->
+  <div class="back-banner">
+    <a href="[LINK_CANVA_COURSE]">
+      &larr; Torna al Corso su Canva
+    </a>
+  </div>
+
+  <h1 style="color:white;">🧠 Quiz: Generativa vs Discriminativa</h1>
   <div class="quiz-mode">
     <button class="gen-btn" onclick="showQuiz('generativa')">🎨 IA Generativa</button>
     <button class="dis-btn" onclick="showQuiz('discriminativa')">📊 IA Discriminativa</button>
@@ -36,7 +48,7 @@
       <button class="option" onclick="check(this, true)">B) Generazione di testo (ChatGPT)</button>
       <button class="option" onclick="check(this, false)">C) Diagnosi medica da radiografie</button>
     </div>
-    <button class="back" onclick="showMenu()">← Torna al menu</button>
+    <button class="back" onclick="showMenu()">&larr; Torna al menu</button>
   </div>
 
   <div id="discriminativa" class="quiz">
@@ -46,7 +58,7 @@
       <button class="option" onclick="check(this, true)">B) Classificare email come spam o legittime</button>
       <button class="option" onclick="check(this, false)">C) Generare immagini da descrizioni</button>
     </div>
-    <button class="back" onclick="showMenu()">← Torna al menu</button>
+    <button class="back" onclick="showMenu()">&larr; Torna al menu</button>
   </div>
 
   <script>
@@ -58,10 +70,12 @@
       document.querySelectorAll('.quiz').forEach(q => q.classList.remove('active'));
     }
     function check(btn, correct) {
-      btn.disabled = true;
+      if (btn.disabled) return;
+      btn.parentElement.querySelectorAll('.option').forEach(o => o.disabled = true);
       btn.classList.add(correct ? 'correct' : 'wrong');
-      const feedback = document.createElement('div');
+      var feedback = document.createElement('div');
       feedback.className = 'feedback';
+      feedback.style.color = correct ? '#10b981' : '#ef4444';
       feedback.textContent = correct ? '✓ Corretto!' : '✗ Sbagliato!';
       btn.after(feedback);
     }
