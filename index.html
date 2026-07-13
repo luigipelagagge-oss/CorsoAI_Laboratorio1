@@ -1,14 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <title>Il mio sito su Prompt</title>
+  <meta charset="UTF-8">
+  <title>Quiz: Generativa vs Discriminativa</title>
   <style>
-    body { background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-family: sans-serif; padding: 2rem; }
-    h1 { font-size: 2.5rem; }
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); color: #333; }
+    .quiz-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+    button { padding: 1rem; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+    .gen-btn { background: #10b981; color: white; }
+    .gen-btn:hover { background: #059669; }
+    .dis-btn { background: #3b82f6; color: white; }
+    .dis-btn:hover { background: #2563eb; }
+    .quiz { display: none; }
+    .quiz.active { display: block; }
+    .question { background: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .option { display: block; width: 100%; text-align: left; padding: 0.75rem; margin: 0.5rem 0; background: #f0f0f0; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+    .option:hover { background: #e0e0e0; }
+    .option.correct { background: #d1fae5; border-color: #10b981; }
+    .option.wrong { background: #fee2e2; border-color: #ef4444; }
+    .feedback { margin-top: 0.5rem; font-weight: bold; font-size: 0.9rem; }
+    .back { padding: 0.5rem 1rem; background: #6b7280; color: white; margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <h1>🚀 Prompt & IA</h1>
-  <p>Ho imparato a scrivere prompt efficaci!</p>
+  <h1>🧠 Quiz: Generativa vs Discriminativa</h1>
+  <div class="quiz-mode">
+    <button class="gen-btn" onclick="showQuiz('generativa')">🎨 IA Generativa</button>
+    <button class="dis-btn" onclick="showQuiz('discriminativa')">📊 IA Discriminativa</button>
+  </div>
+
+  <div id="generativa" class="quiz">
+    <div class="question">
+      <p><strong>1. Quale di queste è un'applicazione di IA Generativa?</strong></p>
+      <button class="option" onclick="check(this, false)">A) Riconoscimento di spam</button>
+      <button class="option" onclick="check(this, true)">B) Generazione di testo (ChatGPT)</button>
+      <button class="option" onclick="check(this, false)">C) Diagnosi medica da radiografie</button>
+    </div>
+    <button class="back" onclick="showMenu()">← Torna al menu</button>
+  </div>
+
+  <div id="discriminativa" class="quiz">
+    <div class="question">
+      <p><strong>1. Quale è un compito tipico di IA Discriminativa?</strong></p>
+      <button class="option" onclick="check(this, false)">A) Scrivere una storia</button>
+      <button class="option" onclick="check(this, true)">B) Classificare email come spam o legittime</button>
+      <button class="option" onclick="check(this, false)">C) Generare immagini da descrizioni</button>
+    </div>
+    <button class="back" onclick="showMenu()">← Torna al menu</button>
+  </div>
+
+  <script>
+    function showQuiz(type) {
+      document.querySelectorAll('.quiz').forEach(q => q.classList.remove('active'));
+      document.getElementById(type).classList.add('active');
+    }
+    function showMenu() {
+      document.querySelectorAll('.quiz').forEach(q => q.classList.remove('active'));
+    }
+    function check(btn, correct) {
+      btn.disabled = true;
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      const feedback = document.createElement('div');
+      feedback.className = 'feedback';
+      feedback.textContent = correct ? '✓ Corretto!' : '✗ Sbagliato!';
+      btn.after(feedback);
+    }
+  </script>
 </body>
 </html>
